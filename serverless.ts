@@ -88,6 +88,18 @@ const serverlessConfiguration: AWS = {
         },
       ],
     },
+    docsUI: {
+    handler: 'src/functions/docs/swagger.handler',
+    events: [
+      {
+        http: {
+          path: 'swagger',
+          method: 'get',
+          cors: true
+        }
+      }
+    ]
+  }
   },
   resources: {
   Resources: {

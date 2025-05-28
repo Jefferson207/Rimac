@@ -2,6 +2,7 @@ const slsw = require('serverless-webpack');
 const path = require('path');
 
 module.exports = {
+  externals: ['express', 'swagger-jsdoc'],
   context: __dirname,
   mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
   entry: slsw.lib.entries,

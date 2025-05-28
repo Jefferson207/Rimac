@@ -1,3 +1,43 @@
+/**
+ * @swagger
+ * /appointment:
+ *   post:
+ *     summary: Crea una nueva cita
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               insuredId:
+ *                 type: string
+ *               scheduleId:
+ *                 type: integer
+ *               countryISO:
+ *                 type: string
+ *             required:
+ *               - insuredId
+ *               - scheduleId
+ *               - countryISO
+ *     responses:
+ *       200:
+ *         description: Cita creada exitosamente
+ *
+ * /appointment/{insuredId}:
+ *   get:
+ *     summary: Obtiene citas por insuredId
+ *     parameters:
+ *       - in: path
+ *         name: insuredId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Lista de citas
+ */
+
 import { APIGatewayProxyHandler, SQSEvent } from 'aws-lambda';
 import { CreateAppointment } from '@/application/useCases/CreateAppointment';
 import { GetAppointmentsByInsuredId } from '@/application/useCases/GetAppointmentsByInsuredId';
